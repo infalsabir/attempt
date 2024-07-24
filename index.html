@@ -3,48 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <title>Login or Sign Up</title>
 </head>
 <body>
-    <form>
-        <label for="username">enter username</label>
-        <input type="text" id="username" name="username">
-        <br><br>
-        <label for="email">enter email</label>
-        <input type="email" id="email" name="email">
-        <br><br>
-        <label for="password">enter password</label>
-        <input type="password" id="password" name="password">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Infal Sabir</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+                <button class="open-button" onclick="openForm()">Login</button>
+                <div class="form-popup" id="myForm">
+                    <form class="form-container">
+                      <h1>Login</h1>
+                      <label for="name"><b>Name</b></label>
+                      <input type="text" placeholder="Enter Name" name="name" required id="name">
+                      <label for="email"><b>Email</b></label>
+                      <input type="text" placeholder="Enter Email" name="email" required id="email">
+                      <label for="psw"><b>Password</b></label>
+                      <input type="password" placeholder="Enter Password" name="psw" required id="password">
+                      <button type="submit" class="btn">Login</button>
+                      <button type="button" class="btn cancel" id="btn" onclick="closeForm()">Close</button>
+                    </form>
+                  </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Sign Up</a>
+            </li>
+            <!-- Add more menu items here -->
+          </ul>
+        </div>
+      </nav>
 
-        <p>
-            Select your age:
-        </p>
-        <input type="radio" name="age" value="0-25" id="option-1">
-        <label for="option-1">0-25</label>
-        <input type="radio" name="age" value="25-50" id="option-2">
-        <label for="option-2">25-50</label>
-        <input type="radio" name="age" value="50-80" id="option-3">
-        <label for="option-3">50-80</label>
 
-        <br><br>
-        <label for="questions">Security questions</label>
-        <select name="questions" id="questions">
-            <option value="q1">what colour are your favourite pair of socks?</option>
-            <option value="q2">who is bts?</option>
-            <option value="q3">who is your bias in bts?</option>
-        </select>
-
-            <br><br>
-
-            <label for="answers">Security questions answers</label>
-            <input type="text" id="answers" name="answers">
-
-            <br><br>
-
-            <input type="submit" value="submit the form">
-        
-    </form>
+      <!-- A button to open the popup form -->
 
 
+
+
+     <script>
+        function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+  const name = document.getElementById('name')
+  const email = document.getElementById('email')
+  const password = document.getElementById('password')
+  const form = document.getElementById('form')
+
+
+  const btn =document.getElementById('btn')
+      btn.addEventListener('click',function(event){
+        console.log(name.value)
+         localStorage.setItem('name', name.value)
+        localStorage.setItem('email', email.value)
+        localStorage.setItem('password', password.value)
+       
+        location.reload
+      })
+
+  const localvalue = localStorage.getItem('email')
+     </script> 
 </body>
 </html>
